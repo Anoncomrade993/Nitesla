@@ -15,7 +15,7 @@ let links = {
 	inventions: 'https://teslasciencecenter.org/nikola-tesla-inventions/',
 	laboratory: 'https://en.wikipedia.org/wiki/Tesla_Experimental_Station',
 	philosophy: 'https://medium.com/@mashrur_ayon/nikola-tesla-his-core-philosophy-and-its-implications-on-modern-science-98e84bfadd03',
-	documentary: 'https//www.youtube.com/embed/HEH3qLofMaU?autoplay=0&rel=0&modestbranding=1'
+	discover: 'https://en.wikipedia.org/wiki/Nikola_Tesla'
 };
 
 

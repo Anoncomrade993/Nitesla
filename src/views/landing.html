@@ -112,9 +112,9 @@
 			<h1 class="text-6xl md:text-8xl font-bold mb-6 text-white text-glow">Nikola Tesla</h1>
 			<p class="text-xl md:text-3xl text-gray-300 mb-8">The Master of Lightning</p>
 			<div class="flex justify-center space-x-4">
-				<button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full transition-all transform hover:scale-105">
+				<a href="<% discover %>" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full transition-all transform hover:scale-105">
 					Discover His Work
-				</button>
+				</a>
 				<button class="border border-gray-400 hover:border-blue-400 px-8 py-3 rounded-full transition-all transform hover:scale-105" onclick="document.getElementById('video-section').scrollIntoView({behavior: 'smooth'})">
 					Watch Documentary
 				</button>
@@ -215,6 +215,7 @@
 			</div>
 		</div>
 	</section>
+
 	<!-- Video Content -->
 	<div id="video-section" class="bg-gray-900 p-8 rounded-lg max-w-4xl  mx-4">
 		<div class="flex justify-between items-center mb-4">
@@ -222,11 +223,10 @@
 		</div>
 		<div class="aspect-w-16 aspect-h-9 bg-gray-800">
 			<!-- YouTube Video Embed -->
-			<iframe class="w-full h-full rounded-lg" src="https://www.youtube.com/embed/HEH3qLofMaU?autoplay=0&rel=0&modestbranding=1" title="Tesla's Vision" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/HEH3qLofMaU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 			</iframe>
 		</div>
 	</div>
-
 
 	<!-- Philosophy Section -->
 	<section id="philosophy" class="py-20 bg-gray-900">
