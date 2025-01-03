@@ -1,5 +1,8 @@
 const rateLimit = require('express-rate-limit');
-const apiRouter = require('express').Router();
+const express = require('express');
+
+const apiRouter = express.Router();
+
 
 const { randQuotes } = require('../controllers/apiControllers.js')
 
@@ -9,7 +12,9 @@ const limiter = rateLimit({
 	message: 'Too many requests, please try again later.',
 });
 
-apiRouter.get('/qoute', randQuotes);
+
+
 apiRouter.use(limiter);
+apiRouter.get('/quote', randQuotes);
 
 module.exports = apiRouter;

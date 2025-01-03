@@ -6,7 +6,7 @@ const {
 
 module.exports.randQuotes = async function(req, res) {
 	try {
-		const quote = await randQuote();
+		const quote = await randQuote()
 		if (!quote) {
 			return sendJsonMessage(res, 500, false, 'Something went wrong ,try again')
 		}
