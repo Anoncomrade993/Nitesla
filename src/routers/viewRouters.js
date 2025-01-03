@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 
-const { renderView, handleErrorView } = require('../middlewares/ui.js');
+const { renderView, handleErrorView ,returner} = require('../middlewares/ui.js');
 const { logAuditAction } = require('../middlewares/audit.js')
 
 
@@ -14,6 +14,7 @@ let links = {
 	start_url: process.env.START_URL,
 };
 
+
 uiRouter.get('/', renderView('landing.html', links));
 uiRouter.get('/home', renderView('landing.html', links));
 uiRouter.get('/maintenance', returner, renderView('maintenance.html'));
@@ -21,20 +22,6 @@ uiRouter.get('/maintenance', returner, renderView('maintenance.html'));
 
 
 
-const retuner = (req, res, next) => {
-	const APP_MODE = process.env.APP_MODE;
-	if (req.path === '/maintenance') {
-		if (APP_MODE !== 'maintenance') {
-			return res.redirect(302, '/');
-		}
-	} else {
-		if (APP_MODE === 'maintenance') {
-			return res.redirect(302, '/maintenance');
-		}
-	}
-
-	return next();
-};
 
 
 uiRouter.use((err, req, res, next) => {

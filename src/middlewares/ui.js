@@ -41,8 +41,25 @@ function checkAppMode(req, res, next) {
 	}
 }
 
+function returner(req, res, next) {
+	const APP_MODE = process.env.APP_MODE;
+	if (req.path === '/maintenance') {
+		if (APP_MODE !== 'maintenance') {
+			return res.redirect(302, '/');
+		}
+	} else {
+		if (APP_MODE === 'maintenance') {
+			return res.redirect(302, '/maintenance');
+		}
+	}
+
+	return next();
+};
+
+
 module.exports = {
 	handleErrorView,
 	renderView,
-	checkAppMode
+	checkAppMode,
+	returner
 }
