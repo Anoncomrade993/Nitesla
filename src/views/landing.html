@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Primary Meta Tags -->
+	<title>Vigenère Cipher Tool</title>
+	<meta name="title" content="Nitesla">
+	<meta name="description" content="A whole site dedicated to Nikolai Tesla">
+	<meta name="keywords" content="Nikolai Tesla, Teslas, Facebook, Twitter, Reddit, electricity , AC circuits , AC, DC, Thomas Edison, electric, Einstein, wireless">
+	<meta name="author" content="MockinBugs,AnonComrade,Dess">
+	<meta name="robots" content="index, follow">
+	<link rel="canonical" href="<%= start_url %>">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="<%= start_url %>">
+	<meta property="og:title" content="Nitesla">
+	<meta property="og:description" content="A whole site dedicated to Nikolai Tesla">
+	<meta property="og:image" content="<%= png_logo %>">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="<%= start_url %>">
+	<meta property="twitter:title" content="Nitesla">
+	<meta property="twitter:description" content="A whole site dedicated to Nikolai Tesla">
+	<meta property="twitter:image" content="<%= png_logo %>">
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/x-icon" sizes="32x32" href="/icons/nitesla.ico">
+	<link rel="icon" type="image/x-icon" sizes="16x16" href="/icons/nitelsa.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="/icons/nitesla.png">
+	<link rel="manifest" href="/site.manifest">
+
+	<script src="https://cdn.tailwindcss.com"></script>
+	<!-- Preload critical assets -->
+	<link rel="preconnect" href="https://unpkg.com">
+	<link rel="preload" href="https://unpkg.com/lucide@latest" as="script">
+
+	<style>
+		@keyframes electricity {
+			0% {
+				opacity: 0.4;
+			}
+
+			50% {
+				opacity: 1;
+			}
+
+			100% {
+				opacity: 0.4;
+			}
+		}
+
+		.electricity-effect {
+			animation: electricity 2s infinite;
+		}
+
+		.invention-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.9);
+			transition: all 0.3s ease;
+		}
+
+		.parallax {
+			background-attachment: fixed;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		.text-glow {
+			text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+		}
+
+		.bg-tesla-pattern {
+			background-image: linear-gradient(45deg, #1a1a1a 25%, transparent 25%),
+				linear-gradient(-45deg, #1a1a1a 25%, transparent 25%),
+				linear-gradient(45deg, transparent 75%, #1a1a1a 75%),
+				linear-gradient(-45deg, transparent 75%, #1a1a1a 75%);
+			background-size: 20px 20px;
+			background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+		}
+	</style>
+</head>
+
+<body class="bg-gray-900 text-gray-300 min-h-screen font-sans">
+	<!-- Navigation -->
+	<nav class="fixed w-full z-50 bg-gray-900 bg-opacity-90 border-b border-gray-800">
+		<div class="container mx-auto px-4">
+			<div class="flex justify-between items-center h-20">
+				<div class="flex items-center space-x-3">
+					<i data-lucide="zap" class="w-8 h-8 electricity-effect text-blue-400"></i>
+					<span class="text-2xl font-bold tracking-widest text-white">TESLA</span>
+				</div>
+				<div class="hidden md:flex space-x-8">
+					<a href="#inventions" class="hover:text-blue-400 transition-colors">Inventions</a>
+					<a href="#philosophy" class="hover:text-blue-400 transition-colors">Philosophy</a>
+					<a href="#laboratory" class="hover:text-blue-400 transition-colors">Laboratory</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Hero Section -->
+	<header class="h-screen relative overflow-hidden flex items-center justify-center">
+		<div class="absolute inset-0 bg-tesla-pattern opacity-10"></div>
+		<div class="absolute inset-0 bg-gradient-to-b from-gray-900 via-transparent to-gray-900 z-10"></div>
+		<img src="/assets/tesla.jpg" alt="Tesla Portrait" class="absolute inset-0 w-full h-full object-cover opacity-40" />
+		<div class="relative z-20 text-center px-4 max-w-4xl mx-auto">
+			<h1 class="text-6xl md:text-8xl font-bold mb-6 text-white text-glow">Nikola Tesla</h1>
+			<p class="text-xl md:text-3xl text-gray-300 mb-8">The Master of Lightning</p>
+			<div class="flex justify-center space-x-4">
+				<button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full transition-all transform hover:scale-105">
+					Discover His Work
+				</button>
+				<button class="border border-gray-400 hover:border-blue-400 px-8 py-3 rounded-full transition-all transform hover:scale-105" onclick="document.getElementById('video-section').scrollIntoView({behavior: 'smooth'})">
+					Watch Documentary
+				</button>
+			</div>
+		</div>
+	</header>
+
+	<!-- Key Inventions Section -->
+	<section id="inventions" class="py-20 bg-gray-900">
+		<div class="container mx-auto px-4">
+			<h2 class="text-4xl md:text-5xl font-bold text-center mb-16 text-white">Revolutionary Inventions</h2>
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<!-- Tesla Coil -->
+				<div class="invention-card bg-gray-800 rounded-lg overflow-hidden shadow-xl">
+					<div class="relative h-64">
+						<img src="/assets/teslaCoil.jpg" alt="Tesla Coil" class="w-full h-full object-cover" />
+						<div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+						<i data-lucide="zap" class="absolute top-4 right-4 w-8 h-8 text-blue-400"></i>
+					</div>
+					<div class="p-6">
+						<h3 class="text-2xl font-bold mb-3 text-white">Tesla Coil (1891)</h3>
+						<p class="text-gray-400 mb-4">
+							A revolutionary high-voltage transformer circuit that would later power radio technology and modern wireless transmission. Capable of producing millions of volts of electricity and creating spectacular lightning displays.
+						</p>
+						<div class="flex justify-between items-center">
+							<span class="text-blue-400">High Voltage Transformer</span>
+							<i data-lucide="arrow-right" class="w-5 h-5"></i>
+						</div>
+					</div>
+				</div>
+
+				<!-- AC Power System -->
+				<div class="invention-card bg-gray-800 rounded-lg overflow-hidden shadow-xl">
+					<div class="relative h-64">
+						<img src="/assets/asPS.jpg" alt="AC Power System" class="w-full h-full object-cover" />
+						<div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+						<i data-lucide="power" class="absolute top-4 right-4 w-8 h-8 text-blue-400"></i>
+					</div>
+					<div class="p-6">
+						<h3 class="text-2xl font-bold mb-3 text-white">AC Power System (1888)</h3>
+						<p class="text-gray-400 mb-4">
+							The alternating current electrical system that powers our world today. Tesla's most profound contribution to humanity, enabling long-distance power transmission and the modern electrical grid.
+						</p>
+						<div class="flex justify-between items-center">
+							<span class="text-blue-400">Power Distribution</span>
+							<i data-lucide="arrow-right" class="w-5 h-5"></i>
+						</div>
+					</div>
+				</div>
+
+				<!-- Wireless Transmission -->
+				<div class="invention-card bg-gray-800 rounded-lg overflow-hidden shadow-xl">
+					<div class="relative h-64">
+						<img src="/assets/wireless_trans.jpg" alt="Wireless Transmission" class="w-full h-full object-cover" />
+						<div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+						<i data-lucide="wifi" class="absolute top-4 right-4 w-8 h-8 text-blue-400"></i>
+					</div>
+					<div class="p-6">
+						<h3 class="text-2xl font-bold mb-3 text-white">Wireless Transmission (1893)</h3>
+						<p class="text-gray-400 mb-4">
+							Pioneered the transmission of energy through the air, laying groundwork for radio, WiFi, and modern wireless communications. The Wardenclyffe Tower was his ambitious attempt at worldwide wireless power.
+						</p>
+						<div class="flex justify-between items-center">
+							<span class="text-blue-400">Wireless Technology</span>
+							<i data-lucide="arrow-right" class="w-5 h-5"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Laboratory Section -->
+	<section id="laboratory" class="py-20 bg-gray-800">
+		<div class="container mx-auto px-4">
+			<div class="flex flex-col md:flex-row items-center gap-12">
+				<div class="md:w-1/2">
+					<h2 class="text-4xl font-bold mb-6 text-white">The Mad Scientist's Laboratory</h2>
+					<p class="text-gray-400 mb-8 leading-relaxed">
+						Tesla's laboratory at Colorado Springs was a temple of scientific innovation. Here, he produced artificial lightning bolts up to 135 feet long, illuminated light bulbs from miles away, and conducted his most audacious experiments.
+					</p>
+					<div class="grid grid-cols-2 gap-4">
+						<div class="bg-gray-900 p-4 rounded-lg">
+							<i data-lucide="lightbulb" class="w-8 h-8 mb-2 text-blue-400"></i>
+							<h4 class="font-bold mb-2">Wireless Light</h4>
+							<p class="text-sm text-gray-400">First demonstration of wireless lighting systems</p>
+						</div>
+						<div class="bg-gray-900 p-4 rounded-lg">
+							<i data-lucide="radio" class="w-8 h-8 mb-2 text-blue-400"></i>
+							<h4 class="font-bold mb-2">Radio Signals</h4>
+							<p class="text-sm text-gray-400">Detected signals from outer space</p>
+						</div>
+					</div>
+				</div>
+				<div class="md:w-1/2">
+					<img src="/assets/laboratory.jpg" alt="Tesla Laboratory" class="rounded-lg shadow-2xl" />
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Video Content -->
+	<div id="video-section" class="bg-gray-900 p-8 rounded-lg max-w-4xl  mx-4">
+		<div class="flex justify-between items-center mb-4">
+			<h3 class="text-2xl font-bold text-white">Tesla's Vision</h3>
+		</div>
+		<div class="aspect-w-16 aspect-h-9 bg-gray-800">
+			<!-- YouTube Video Embed -->
+			<iframe class="w-full h-full rounded-lg" src="https://www.youtube.com/embed/VIDEO_ID_HERE?autoplay=0&rel=0&modestbranding=1" title="Tesla's Vision" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe>
+		</div>
+	</div>
+
+
+	<!-- Philosophy Section -->
+	<section id="philosophy" class="py-20 bg-gray-900">
+		<div class="container mx-auto px-4">
+			<div class="max-w-4xl mx-auto text-center">
+				<i data-lucide="brain" class="w-16 h-16 mx-auto mb-8 text-blue-400"></i>
+				<h2 class="text-4xl font-bold mb-8 text-white">The Tesla Philosophy</h2>
+				<div class="grid md:grid-cols-3 gap-8 text-left">
+					<div class="bg-gray-800 p-6 rounded-lg">
+						<h3 class="text-xl font-bold mb-4 text-white">Free Energy</h3>
+						<p class="text-gray-400">Tesla's dream was to provide free wireless energy to the world, believing that access to power was a fundamental human right.</p>
+					</div>
+					<div class="bg-gray-800 p-6 rounded-lg">
+						<h3 class="text-xl font-bold mb-4 text-white">Scientific Method</h3>
+						<p class="text-gray-400">He visualized his inventions completely in his mind before building them, claiming he could even test them mentally.</p>
+					</div>
+					<div class="bg-gray-800 p-6 rounded-lg">
+						<h3 class="text-xl font-bold mb-4 text-white">Future Vision</h3>
+						<p class="text-gray-400">Tesla predicted smartphones, wireless internet, and autonomous vehicles decades before their invention.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Quote Section 
+	<section class="py-20 bg-gray-800 parallax">
+		<div class="container mx-auto px-4">
+			<div class="max-w-4xl mx-auto text-center">
+				<i data-lucide="quote" class="w-16 h-16 mx-auto mb-8 text-blue-400 opacity-50"></i>
+				<blockquote id="quote-container" class="text-3xl md:text-4xl font-serif italic mb-8 text-white">			</blockquote>
+				<cite class="text-xl text-gray-400">- Nikola Tesla</cite>
+			</div>
+		</div>
+	</section>
+-->
+	<!-- Quote Section -->
+	<section class="py-20 bg-gray-800 parallax">
+		<div class="container mx-auto px-4">
+			<div class="max-w-4xl mx-auto text-center flex items-center justify-center">
+				<img src="/assets/Nikolai.jpg" alt="Nikola Tesla" class="w-32 h-32 rounded-full mr-8">
+				<div>
+					<i data-lucide="quote" class="w-16 h-16 mx-auto mb-8 text-blue-400 opacity-50"></i>
+					<blockquote id="quote-container" class="text-3xl md:text-4xl font-serif italic mb-8 text-white"></blockquote>
+					<cite class="text-xl text-gray-400">- Nikola Tesla</cite>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Legacy Section -->
+	<section id="legacy" class="py-20 bg-gray-900">
+		<div class="container mx-auto px-4">
+			<h2 class="text-4xl font-bold text-center mb-16 text-white">Modern Impact</h2>
+			<div class="grid md:grid-cols-4 gap-8">
+				<div class="text-center">
+					<i data-lucide="smartphone" class="w-12 h-12 mx-auto mb-4 text-blue-400"></i>
+					<h3 class="text-xl font-bold mb-2">Wireless Devices</h3>
+					<p class="text-gray-400">Foundation of modern mobile technology</p>
+				</div>
+				<div class="text-center">
+					<i data-lucide="car" class="w-12 h-12 mx-auto mb-4 text-blue-400"></i>
+					<h3 class="text-xl font-bold mb-2">Electric Vehicles</h3>
+					<p class="text-gray-400">Inspiration for modern EV revolution</p>
+				</div>
+				<div class="text-center">
+					<i data-lucide="radio" class="w-12 h-12 mx-auto mb-4 text-blue-400"></i>
+					<h3 class="text-xl font-bold mb-2">Radio Technology</h3>
+					<p class="text-gray-400">Pioneered wireless communication</p>
+				</div>
+				<div class="text-center">
+					<i data-lucide="power" class="w-12 h-12 mx-auto mb-4 text-blue-400"></i>
+					<h3 class="text-xl font-bold mb-2">Power Grid</h3>
+					<p class="text-gray-400">Modern electrical infrastructure</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="bg-gray-900 border-t border-gray-800 py-12">
+		<div class="container mx-auto px-4">
+			<div class="text-gray-400">
+				<h4 class="text-xl font-bold text-white mb-4">Historical Sites</h4>
+				<ul class="space-y-2">
+					<li>Wardenclyffe Tower</li>
+					<li>Colorado Springs Laboratory</li>
+					<li>Tesla Science Center</li>
+					<li>Niagara Falls Power Plant</li>
+				</ul>
+			</div>
+			<div class="text-gray-400">
+				<h4 class="text-xl font-bold text-white mb-4">Patents & Papers</h4>
+				<ul class="space-y-2">
+					<li>AC Motor (1888)</li>
+					<li>Tesla Coil (1891)</li>
+					<li>Radio Patents (1897)</li>
+					<li>Turbine Design (1913)</li>
+				</ul>
+			</div>
+		</div>
+		<div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500">
+			<p>&copy; <span id="year"></span> Nitesla. All rights reserved.</p>
+		</div>
+		</div>
+	</footer>
+
+	<!-- Interactive Timeline (Fixed Side) -->
+	<div class="fixed right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 p-4 rounded-l-lg shadow-xl hidden md:block">
+		<div class="space-y-4">
+			<div class="relative group">
+				<div class="w-3 h-3 bg-blue-400 rounded-full cursor-pointer"></div>
+				<div class="absolute left-6 top-0 bg-gray-900 p-2 rounded hidden group-hover:block w-48">
+					<p class="text-sm">1856: Birth in Smiljan, Croatia</p>
+				</div>
+			</div>
+			<div class="relative group">
+				<div class="w-3 h-3 bg-blue-400 rounded-full cursor-pointer"></div>
+				<div class="absolute left-6 top-0 bg-gray-900 p-2 rounded hidden group-hover:block w-48">
+					<p class="text-sm">1884: Arrives in New York</p>
+				</div>
+			</div>
+			<div class="relative group">
+				<div class="w-3 h-3 bg-blue-400 rounded-full cursor-pointer"></div>
+				<div class="absolute left-6 top-0 bg-gray-900 p-2 rounded hidden group-hover:block w-48">
+					<p class="text-sm">1891: Tesla Coil invented</p>
+				</div>
+			</div>
+			<div class="relative group">
+				<div class="w-3 h-3 bg-blue-400 rounded-full cursor-pointer"></div>
+				<div class="absolute left-6 top-0 bg-gray-900 p-2 rounded hidden group-hover:block w-48">
+					<p class="text-sm">1943: Death in New York</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+	<script src="/scripts/quoter.js"></script>
+	<script>
+		// Initialize Lucide icons
+		lucide.createIcons();
+
+
+		document.getElementById('year').value = (new Date()).getFullYear()
+		// Add scroll animations
+		document.addEventListener('scroll', () => {
+			const cards = document.querySelectorAll('.invention-card');
+			cards.forEach(card => {
+				const rect = card.getBoundingClientRect();
+				if (rect.top < window.innerHeight - 100) {
+					card.style.opacity = '1';
+					card.style.transform = 'translateY(0)';
+				}
+			});
+		});
+
+		// Timeline interaction
+		const timelinePoints = document.querySelectorAll('.timeline-point');
+		timelinePoints.forEach(point => {
+			point.addEventListener('mouseenter', () => {
+				point.querySelector('.timeline-content').classList.remove('hidden');
+			});
+			point.addEventListener('mouseleave', () => {
+				point.querySelector('.timeline-content').classList.add('hidden');
+			});
+		});
+	</script>
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebPage",
+			"name": "Nitesla",
+			"description": "A whole site dedicated to Nikolai Tesla ",
+			"url": "<%= start_url %>"
+		}
+	</script>
+</body>
+
+</html>
