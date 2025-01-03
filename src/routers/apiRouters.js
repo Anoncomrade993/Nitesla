@@ -13,7 +13,6 @@ const limiter = rateLimit({
 });
 
 
-
 apiRouter.use(limiter);
 apiRouter.get('/quote', randQuotes);
 
