@@ -1,8 +1,6 @@
 const dotenv = require('dotenv');
 const http = require('http');
 const app = require('../../app.js');
-const connectToDb = require('./database.js');
-
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
@@ -12,8 +10,6 @@ let server;
 
 const startServer = async () => {
 	try {
-		await connectToDb();
-		console.log('📦 Connected to Database');
 		server = http.createServer(app);
 		return new Promise((resolve, reject) => {
 			server

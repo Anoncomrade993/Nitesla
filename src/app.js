@@ -7,12 +7,10 @@
  const compression = require("compression");
  const path = require("path");
  const cookie = require("cookie-parser");
- const session = require("express-session");
- const MongoStore = require("connect-mongo");
  const morgan = require("morgan");
  const xss = require("xss-clean");
  const hpp = require("hpp");
- const mongoSanitize = require("express-mongo-sanitize");
+ 
  const ejs = require('ejs');
 
  const { attackMiddleware } = require("./middlewares/security.js");
@@ -76,33 +74,14 @@
  app.use(compression());
  app.use(cookie());
  app.use(rateLimiter);
- app.use(bodyParser.json());
+ app.use(bodyParser);
  app.use(bodyParser.urlencoded({ extended: true }));
  app.use(attackMiddleware);
  app.disable("x-powered-by");
 
 
 
- // Session Setup 
- app.use(
- 	session({
- 		secret: process.env.SESSION_SECRET,
- 		resave: false,
- 		saveUninitialized: false,
- 		rolling: true, // Reset timer on each request
- 		store: MongoStore.create({
- 			mongoUrl: process.env.MONGODB_URI,
- 			ttl: 24 * 60 * 60, // 1 day
- 			autoRemove: "native",
- 		}),
- 		cookie: {
- 			secure: process.env.NODE_ENV === "production",
- 			maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
- 			sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
- 			httpOnly: true,
- 		},
- 	})
- );
+
 
 
  // Utility Routes

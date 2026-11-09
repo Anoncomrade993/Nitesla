@@ -3,8 +3,6 @@ require('dotenv').config();
 const express = require('express');
 
 const { renderView, handleErrorView, returner } = require('../middlewares/ui.js');
-const { logAuditAction } = require('../middlewares/audit.js')
-
 
 const uiRouter = express.Router();
 
@@ -32,7 +30,7 @@ uiRouter.use((err, req, res, next) => {
 	console.error('Unhandled Error:', err);
 
 	const isApiRequest = req.xhr || req.accepts('json');
-
+/*
 	const logError = async () => {
 		try {
 			await logAuditAction(
@@ -52,6 +50,7 @@ uiRouter.use((err, req, res, next) => {
 	};
 
 	logError();
+	*/
 
 	if (isApiRequest) {
 		return res.status(err.status || 500).json({
