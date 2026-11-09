@@ -7,9 +7,9 @@ const { renderView, handleErrorView, returner } = require('../middlewares/ui.js'
 const uiRouter = express.Router();
 
 let links = {
-	png_logo: process.env.PNG_LOGO_URL,
-	portfolio_url: process.env.PORTFOLIO_URL,
-	start_url: process.env.START_URL,
+	png_logo: process.env.PNG_LOGO_URL || "",
+	portfolio_url: process.env.PORTFOLIO_URL | "",
+	start_url: process.env.START_URL | "",
 	inventions: 'https://teslasciencecenter.org/nikola-tesla-inventions/',
 	laboratory: 'https://en.wikipedia.org/wiki/Tesla_Experimental_Station',
 	philosophy: 'https://medium.com/@mashrur_ayon/nikola-tesla-his-core-philosophy-and-its-implications-on-modern-science-98e84bfadd03',
